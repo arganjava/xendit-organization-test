@@ -1,10 +1,14 @@
 const OrganizationModel = require('../models/organization')
 const MemberModel = require('../models/member')
+const CommentOutbound = require('../outbound/comment')
 
 const OrganizationService = {
     create: createOrganization,
     addMember: addMember,
-    getMembers: getMembers
+    getMembers: getMembers,
+    addComment: addComment,
+    deleteAllComments: deleteAllComments,
+    showComments: showComments
 }
 
 async function createOrganization(request) {
@@ -58,6 +62,37 @@ async function getMembers(organizationName) {
             return Promise.resolve(result);
         });
 
+}
+
+
+async function addComment(organizationName, comment) {
+    return findOrganizationNameAndIsProceed(organizationName)
+        .then(value => CommentOutbound.addComment({organization: organizationName, comment: comment}))
+
+}
+
+async function deleteAllComments(organizationName) {
+    return findOrganizationNameAndIsProceed(organizationName)
+        .then(value => CommentOutbound.deleteAllComments(organizationName))
+}
+
+async function showComments(organizationName) {
+    return findOrganizationNameAndIsProceed(organizationName)
+        .then(value => CommentOutbound.showComments(organizationName).then(value => {
+        return value.map(result => {
+            return {comment: result.message}
+        });
+    }))
+}
+
+async function findOrganizationNameAndIsProceed(organizationName) {
+    return OrganizationModel.find({name: organizationName})
+        .then(result => {
+            if (result === undefined || result.length == 0) {
+                throw new Error('organization not found');
+            }
+            return true;
+        });
 }
 
 module.exports = OrganizationService

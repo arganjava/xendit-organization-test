@@ -30,5 +30,32 @@ router.get('/:organizationName/members', async function (req, res, next) {
         })
 });
 
+router.post('/:organizationName/comments', async function (req, res, next) {
+    return organizationService.addComment(req.params.organizationName, req.body.comment)
+        .then(value => res.json({comment: value.message}))
+        .catch(reason => {
+            console.error(reason.message);
+            res.status(422).send(reason.message);
+        })
+});
+
+router.get('/:organizationName/comments', async function (req, res, next) {
+    return organizationService.showComments(req.params.organizationName)
+        .then(value => res.json(value))
+        .catch(reason => {
+            console.error(reason.message);
+            res.status(422).send(reason.message);
+        })
+});
+
+router.delete('/:organizationName/comments', async function (req, res, next) {
+    return organizationService.deleteAllComments(req.params.organizationName)
+        .then(value => res.send("delete all success"))
+        .catch(reason => {
+            console.error(reason.message);
+            res.status(422).send(reason.message);
+        })
+});
+
 
 module.exports = router;
