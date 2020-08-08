@@ -6,6 +6,10 @@
     "start": "node ./bin/www",
     "test": "./node_modules/.bin/mocha ./test/*.test.js"
   },
+  "engines": {
+    "node": "12.x"
+  },
+  "main": "app.js",
   "dependencies": {
     "axios": "^0.19.2",
     "cookie-parser": "~1.4.4",
