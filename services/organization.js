@@ -56,6 +56,9 @@ async function addMember(organizationId, memberId) {
 async function getMembers(organizationName) {
     return OrganizationModel.findOne({name: organizationName})
         .then(result => {
+            if(!result){
+                throw new Error('organization not found');
+            }
             result.members.sort((a, b) => {
                 return b.totalFollower - a.totalFollower;
             })
