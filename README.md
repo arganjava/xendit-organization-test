@@ -1,12 +1,4 @@
 # xendit-organization-test v1.0.0
-## Table of Contents
-- [Installation](#installation)
-- [Features Base On Requirement](#features)
-- [Additional Features](#additional_features)
-- [Test Case Scenarios](#test_case_scenario)
-- [Technical Steps](#technical_step)
-
----
 
 
 ## Installation
