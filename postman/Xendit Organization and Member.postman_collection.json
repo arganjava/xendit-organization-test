@@ -92,7 +92,7 @@
 			"id": "6214328c-f4e5-9854-8e21-56616b2b7e29",
 			"headers": "",
 			"headerData": [],
-			"url": "https://xendit-organization.herokuapp.com//orgs/addMember/{{organizationId}}/{{memberId}}",
+			"url": "https://xendit-organization.herokuapp.com/orgs/addMember/{{organizationId}}/{{memberId}}",
 			"queryParams": [],
 			"preRequestScript": null,
 			"pathVariables": {},

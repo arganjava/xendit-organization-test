@@ -37,7 +37,7 @@
 ## Additional Features
 - Add new organization `POST https://xendit-organization.herokuapp.com/orgs`
 - Add new member `POST https://xendit-organization.herokuapp.com/member`
-- Organization add member `PUT https://xendit-organization.herokuapp.com//orgs/addMember/{{organizationId}}/{{memberId}}`
+- Organization add member `PUT https://xendit-organization.herokuapp.com/orgs/addMember/{{organizationId}}/{{memberId}}`
 
 - > note: if you want to run locally just used `http://localhost:3000` instead
 - > postman doc in folder `postman` file Xendit Organization and Member.postman_collection.json
@@ -50,7 +50,7 @@
 - `Organization delete all comments` When client input unregistered organization then error message will response code 422 and body message **organization not found**
 - `Organization delete all comments` When client input registered organization then error message will response code 200 and body message **delete all success**
 - `Organization get members` When client input unregistered organization then error message will response code 422 and body message **organization not found**
-- `Organization get members` When client input registered organization then error message will response code 200 and body message **{ "_id": "id", "name": "name", "members": [ { "_id": "id", "name": "name", "avatarUrl": "avatarUrl", "totalFollower": 0, "totalFollowerTo": 0, "__v": 0 } ], "__v": 0 }**
+- `Organization get members` When client input registered organization then message will response code 200 and body message **{ "_id": "id", "name": "name", "members": [ { "_id": "id", "name": "name", "avatarUrl": "avatarUrl", "totalFollower": 0, "totalFollowerTo": 0, "__v": 0 } ], "__v": 0 }**
 
 ## Technical Steps
 
@@ -59,6 +59,7 @@
 - create unit test to cover business logic on `test` folder
 - add new route `routes` folder
 - register all route in `app.js` file
+- external call rest api service `outbound` folder 
 - postman documentation in `postman` folder 
 
 ## Author
